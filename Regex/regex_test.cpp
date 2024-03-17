@@ -125,7 +125,6 @@ RegexNode* construct_regex3() {
 
 
 // Construct the regular expression [0-9]+(\.[0-9]+)?
-// @Author: Sainatha Reddy Siripireddy
 RegexNode* construct_regex4() {
   GroupNode *regex = new GroupNode(); 
 
