@@ -125,10 +125,23 @@ RegexNode* construct_regex3() {
 
 
 // Construct the regular expression [0-9]+(\.[0-9]+)?
+// @Author: Sainatha Reddy Siripireddy
 RegexNode* construct_regex4() {
   GroupNode *regex = new GroupNode(); 
 
-  // YOUR CODE HERE
+  // create the main expression [0-9]+
+  OneNode *oneOrMoreDigits = new OneNode(new RangeNode('0', '9'));
+  regex->add_node(oneOrMoreDigits);
+
+  // create the optional expression (\.[0-9]+)?
+  GroupNode *optionalExpression = new GroupNode();
+  optionalExpression->add_node(new CharacterNode('.'));
+  optionalExpression->add_node(oneOrMoreDigits);
+
+  OptionalNode *optionalDecimalPart = new OptionalNode(optionalExpression);
+
+  // combine the main expression and optional expression
+  regex->add_node(optionalDecimalPart);
   
   return regex;
 }
